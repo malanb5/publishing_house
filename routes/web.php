@@ -16,3 +16,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'books', 'as' => 'books.'], function (){
+    Route::get('/', 'BooksController@index')->name('index');
+});
