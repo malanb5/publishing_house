@@ -47,7 +47,7 @@ create_seeder: #create seeder name=[seederName]
 	@sudo docker exec -it $(docker_name) bash -c 'php artisan make:seeder $(name) && chmod -R 777 .'
 
 create_test: #create test name=[testName]
-	@sudo docker exec -it $(docker_name) bash -c 'php artisan make:test $(name)Test && chmod -R 777 .'
+	@sudo docker exec -it $(docker_name) bash -c 'php artisan config:clear && php artisan make:test $(name)Test && chmod -R 777 .'
 
 create_email: #create email name=[emailName]
 	@sudo docker exec -it $(docker_name) bash -c 'php artisan make:mail $(name) && chmod -R 777 .'
