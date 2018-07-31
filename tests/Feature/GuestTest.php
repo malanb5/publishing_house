@@ -28,4 +28,11 @@ class GuestTest extends TestCase
         $response = $this->get('/register');
         $response->assertStatus(200);
     }
+
+    public function testLogoutPage()
+    {
+        $response = $this->get('/logout');
+        $response->assertStatus(302);
+    }
+
 }

@@ -10,10 +10,8 @@ trait ApiEnv
     public $userName = 'John';
     public $userPassword = '123456';
     public $userMail = 'johnr.doe@test.com';
-    public $headers = null;
-    public $token = null;
 
-    public function createEnvironment($role = 'admin')
+    public function createEnvironment($login=false)
     {
         $this->removeEnvironment();
         $this->user = User::create([
@@ -21,8 +19,10 @@ trait ApiEnv
             'email' => $this->userMail,
             'password' => bcrypt($this->userPassword),
         ]);
-        $this->token = JWTAuth::attempt(['email' => $this->userMail, 'password' => $this->userPassword,]);
-        $this->headers = ['Authorization' => 'Bearer '.$this->token];
+
+        if ($login) {
+            $this->be(User::where('id', '=', $this->user->id)->first());
+        }
     }
     private function removeEnvironment()
     {
