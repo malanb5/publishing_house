@@ -34,5 +34,4 @@ class GuestTest extends TestCase
         $response = $this->get('/logout');
         $response->assertStatus(302);
     }
-
 }
