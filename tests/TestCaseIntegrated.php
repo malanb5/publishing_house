@@ -10,6 +10,8 @@ abstract class TestCaseIntegrated extends BaseTestCase
 {
     use CreatesApplication, DatabaseMigrations, ApiEnv;
 
+    public $baseUrl = 'http://localhost'; //todo add env.test
+
     public function setUp()
     {
         parent::setUp();
