@@ -13,6 +13,6 @@ class AuthorTableSeeder extends Seeder
     public function run()
     {
         Author::truncate();
-        factory(Author::class, 25)->create();
+        factory(Author::class, 10)->create();
     }
 }

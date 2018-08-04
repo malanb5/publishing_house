@@ -15,8 +15,19 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('book-index', require('./components/book_table/IndexBookComponent'));
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import store from './store/store';
+
+library.add(faTrashAlt)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });

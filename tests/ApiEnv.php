@@ -1,9 +1,10 @@
 <?php
 
 namespace Tests;
-use App\Models\Author;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Author;
+use App\Models\Publisher;
 use JWTAuth;
 
 trait ApiEnv
@@ -34,6 +35,8 @@ trait ApiEnv
     {
         User::truncate();
         Book::truncate();
+        Author::truncate();
+        Publisher::truncate();
 
         if ($this->user) {$this->user = null;}
         if ($this->book) {$this->book = null;}
@@ -54,6 +57,7 @@ trait ApiEnv
     private function createBooks(bool $createBook, int $bookCount){
         if($createBook){
             factory(Author::class)->create();
+            factory(Publisher::class)->create();
             factory(Book::class)->create([
                 'name' => $this->bookName,
                 'description' => $this->bookDescription,
