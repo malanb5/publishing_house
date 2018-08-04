@@ -6,9 +6,6 @@ use Tests\TestCaseIntegrated;
 
 class IntegratedHttpTest extends TestCaseIntegrated
 {
-    public $baseUrl = 'http://localhost'; //todo add env.test
-
-
     public function testMainPage()
     {
         $this->visit('/')

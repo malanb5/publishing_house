@@ -6,8 +6,6 @@ use Tests\TestCaseIntegrated;
 
 class IntegratedRegisterTest extends TestCaseIntegrated
 {
-    public $baseUrl = 'http://localhost'; //todo add env.test
-
     public function testRegisterNotExistUser()
     {
         $this->visit('/register')

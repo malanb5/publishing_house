@@ -6,8 +6,6 @@ use Tests\TestCaseIntegrated;
 
 class IntegratedLoginTest extends TestCaseIntegrated
 {
-    public $baseUrl = 'http://localhost'; //todo add env.test
-
     /**
      * Positive
      */
