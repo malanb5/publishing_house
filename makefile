@@ -86,7 +86,7 @@ cron_task: #cron status
 	@sudo docker exec -it $(docker_name) bash -c 'crontab -e'
 
 test: #run test cases
-	@sudo docker exec -it $(docker_name) bash -c 'php artisan config:clear && vendor/bin/phpunit --coverage-html tests\coverage'
+	@sudo docker exec -it $(docker_name) bash -c 'php artisan config:clear && vendor/bin/phpunit'
 
 test_class: #test specific class name="$(name)"
 	@sudo docker exec -it $(docker_name) bash -c 'vendor/bin/phpunit --filter $(name)'

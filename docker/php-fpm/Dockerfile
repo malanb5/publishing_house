@@ -12,10 +12,16 @@ RUN apt-get update && \
     apt-get install -y mc && \
     apt-get install -y vim && \
     apt-get install -y nano && \
-    apt-get install -y --no-install-recommends php7.2-mysql php7.2-sqlite3 php7.2-gd php-imagick php-memcached && \
+#    apt-get install -y php7.2-dev && \
+    apt-get install -y --no-install-recommends php7.2-dev php7.2-mysql php7.2-sqlite3 php7.2-gd php-imagick php-memcached && \
     apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 COPY ./ /application
+
+#RUN apt-get update
+#RUN apt install php-pear &&\
+#    pecl install xdebug
+#zend_extension=/usr/lib/php/20170718/xdebug.so
 
 RUN php composer.phar update && chmod -R 777 . && php composer.phar dump-autoload
 
