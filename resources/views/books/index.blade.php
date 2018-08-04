@@ -24,7 +24,7 @@
                             <div class="card-body">
                                 <!--Meta-->
                                 <div class="meta d-flex justify-content-between mb-3">
-                                    <span class="autor_name"><i>John Dow</i></span>
+                                    <span class="autor_name"><i>{{ $book->author->name }}</i></span>
                                     <span class="published_date">{{ $book->published_at }}</span>
                                 </div>
                                 <!--Title-->
