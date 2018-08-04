@@ -26,14 +26,15 @@ class Book extends Model
 
     /**
      * @param Request $request
-     * @return mixed
+     * @param int $perPage
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getAllWithPagination(Request $request){
+    public function getAllWithPagination(Request $request, $perPage = 12){
         $query = $this->query();
         $query
             ->with('author')
             ->with('publisher')
         ;
-        return $query->paginate(12);
+        return $query->paginate($perPage);
     }
 }

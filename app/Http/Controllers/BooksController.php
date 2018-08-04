@@ -15,4 +15,13 @@ class BooksController extends Controller
     public function index(Request $request, Book $books){
         return view('books.index', ['books' => $books->getAllWithPagination($request)]);
     }
+
+    /**
+     * @param Request $request
+     * @param Book $books
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function tableIndex(Request $request, Book $books){
+        return view('admin.books.index', ['books' => $books->getAllWithPagination($request, 10)]);
+    }
 }

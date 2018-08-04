@@ -84,6 +84,7 @@
 
                 <div class="links">
                     <a href="{{ route('books.index') }}">List</a>
+                    <a href="{{ route('admin.books.index') }}">Edit Books List</a>
                 </div>
             </div>
         </div>
