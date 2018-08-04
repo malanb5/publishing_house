@@ -2,6 +2,8 @@
 
 use Faker\Generator as Faker;
 use App\Models\Book;
+use App\Models\Author;
+use App\Models\Publisher;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,18 @@ use App\Models\Book;
 |
 */
 
-$factory->define(Book::class, function (Faker $faker) {
+
+
+$factory->define(Book::class, function (Faker $faker){
+
+    $authors = Author::all()->toArray();
+    $publishers = Publisher::all()->toArray();
+
     return [
         'name' => $faker->realText($maxNbChars = 50, $indexSize = 2),
         'description' => $faker->realText($maxNbChars = 250, $indexSize = 2),
-        'author_id' => $faker->numberBetween($min = 1, $max = 10),
-        'publisher_id' => $faker->numberBetween($min = 1, $max = 50),
+        'author_id' => $faker->randomElement($authors)['id'],
+        'publisher_id' => $faker->randomElement($publishers)['id'],
         'image' => $faker->imageUrl($width = 640, $height = 480),
         'published_at' => $faker->date($format = 'Y-m-d', $max = 'now')
     ];

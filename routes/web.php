@@ -20,3 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'prefix' => 'books', 'as' => 'books.'], function (){
     Route::get('/', 'BooksController@index')->name('index');
 });
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.books.'], function (){
+    Route::get('/books', 'BooksController@tableIndex')->name('index');
+});
