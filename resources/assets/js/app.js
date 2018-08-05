@@ -17,17 +17,21 @@ window.Vue = require('vue');
 
 Vue.component('book-index', require('./components/book_table/IndexBookComponent'));
 
+/**
+ * Use Font Awesome
+ */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-import store from './store/store';
-
 library.add(faTrashAlt)
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+/**
+ * Use Vue-cookie
+ */
+var VueCookie = require('vue-cookie');
+Vue.use(VueCookie);
+
 const app = new Vue({
-    el: '#app',
-    store
+    el: '#app'
 });
