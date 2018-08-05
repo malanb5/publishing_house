@@ -33,7 +33,7 @@
     export default {
         name: "IndexBookComponent",
         props:[
-            'props_books'
+            'props_books', 'books_index_url'
         ],
         data(){
             return {
@@ -46,6 +46,25 @@
         methods:{
             deleteBook(book){
                 console.log(book.name);
+                axios({
+                    headers: {
+                        'Authorization': 'Bearer ' + this.$cookie.get('jwt'),
+                        'Content-Type': 'application/json'
+                    },
+                    url: 'http://localhost/api/books/delete',
+                    method: 'delete',
+                    data: {
+                        book: book
+                    }
+                })
+                    .then(response => {
+                        console.log(response.data);
+                        window.location.href = this.books_index_url;
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+
             }
         }
     }

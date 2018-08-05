@@ -13,6 +13,7 @@
                     <div class="col-sm-12 mb-4">
                         <book-index
                                 props_books="{{ collect($books) }}"
+                                books_index_url="{{ route('admin.books.index') }}"
                         ></book-index>
                     </div>
 
